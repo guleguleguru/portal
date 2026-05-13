@@ -1,0 +1,257 @@
+<Window x:Class="DesktopPortal.Views.RuleEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="规则"
+        Height="650"
+        Width="760"
+        MinHeight="610"
+        MinWidth="700"
+        WindowStartupLocation="CenterOwner"
+        Background="#EEF1F5"
+        FontFamily="Microsoft YaHei UI"
+        Icon="/Assets/DesktopPortal.ico"
+        PreviewKeyDown="Window_PreviewKeyDown"
+        PreviewMouseDown="Window_PreviewMouseDown">
+    <Window.Resources>
+        <SolidColorBrush x:Key="InkBrush" Color="#17202A" />
+        <SolidColorBrush x:Key="MutedBrush" Color="#667085" />
+        <SolidColorBrush x:Key="LineBrush" Color="#D8DEE7" />
+        <SolidColorBrush x:Key="AccentBrush" Color="#146C94" />
+
+        <Style x:Key="FieldLabelStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#344054" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Margin" Value="0,0,0,6" />
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="36" />
+            <Setter Property="Padding" Value="10,0" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderBrush" Value="{StaticResource LineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Height" Value="36" />
+            <Setter Property="Padding" Value="8,0" />
+            <Setter Property="BorderBrush" Value="{StaticResource LineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+
+        <Style x:Key="DialogButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="36" />
+            <Setter Property="MinWidth" Value="92" />
+            <Setter Property="Padding" Value="14,0" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource LineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+
+        <Style x:Key="PrimaryDialogButtonStyle" TargetType="Button" BasedOn="{StaticResource DialogButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource AccentBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Background="#11202A"
+                Padding="22,18">
+            <StackPanel>
+                <TextBlock Text="规则编辑"
+                           FontSize="22"
+                           FontWeight="SemiBold"
+                           Foreground="White" />
+                <TextBlock Text="配置快捷键、目标路径和窗口匹配提示。目标路径支持直接拖放文件、文件夹或程序。"
+                           FontSize="12"
+                           Foreground="#A9BAC7"
+                           Margin="0,5,0,0" />
+            </StackPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <Grid Margin="22">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="18" />
+                    <ColumnDefinition Width="230" />
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0"
+                        Background="White"
+                        BorderBrush="{StaticResource LineBrush}"
+                        BorderThickness="1"
+                        CornerRadius="8"
+                        Padding="18">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Margin="0,0,0,14">
+                            <TextBlock Text="名称" Style="{StaticResource FieldLabelStyle}" />
+                            <TextBox x:Name="NameTextBox" />
+                        </StackPanel>
+
+                        <Grid Grid.Row="1" Margin="0,0,0,14">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="14" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="目标类型" Style="{StaticResource FieldLabelStyle}" />
+                                <ComboBox x:Name="TargetTypeComboBox"
+                                          SelectionChanged="TargetTypeComboBox_SelectionChanged" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="URL 打开方式" Style="{StaticResource FieldLabelStyle}" />
+                                <ComboBox x:Name="OpenModeComboBox" />
+                            </StackPanel>
+                        </Grid>
+
+                        <StackPanel Grid.Row="2" Margin="0,0,0,14">
+                            <TextBlock Text="目标路径" Style="{StaticResource FieldLabelStyle}" />
+                            <Border BorderBrush="#B7D8E6"
+                                    BorderThickness="1"
+                                    Background="#F8FBFC"
+                                    CornerRadius="8"
+                                    Padding="10">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox x:Name="TargetTextBox"
+                                                 Grid.Column="0"
+                                                 AllowDrop="True"
+                                                 PreviewDragOver="TargetTextBox_PreviewDragOver"
+                                                 Drop="TargetTextBox_Drop" />
+                                        <Button x:Name="BrowseButton"
+                                                Grid.Column="1"
+                                                Content="浏览"
+                                                Style="{StaticResource DialogButtonStyle}"
+                                                Margin="8,0,0,0"
+                                                Click="BrowseButton_Click" />
+                                    </Grid>
+                                    <TextBlock Grid.Row="1"
+                                               Text="可把文件、文件夹或 .exe 程序拖放到这里，软件会自动识别目标类型。"
+                                               Foreground="{StaticResource MutedBrush}"
+                                               FontSize="12"
+                                               Margin="2,8,0,0"
+                                               TextWrapping="Wrap" />
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="3" Margin="0,0,0,14">
+                            <TextBlock Text="快捷键" Style="{StaticResource FieldLabelStyle}" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox x:Name="HotkeyTextBox"
+                                         Grid.Column="0"
+                                         IsReadOnly="True" />
+                                <Button x:Name="CaptureHotkeyButton"
+                                        Grid.Column="1"
+                                        Content="录入快捷键"
+                                        Style="{StaticResource DialogButtonStyle}"
+                                        Margin="8,0,0,0"
+                                        Click="CaptureHotkeyButton_Click" />
+                            </Grid>
+                            <TextBlock x:Name="HotkeyHintText"
+                                       Text="支持数字键、F1-F12、鼠标中键/侧键，或 Ctrl/Alt/Shift + 字母/数字组合。"
+                                       Foreground="{StaticResource MutedBrush}"
+                                       FontSize="12"
+                                       Margin="2,8,0,0" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="4" Margin="0,0,0,14">
+                            <TextBlock Text="窗口标题提示" Style="{StaticResource FieldLabelStyle}" />
+                            <TextBox x:Name="WindowTitleHintTextBox" />
+                        </StackPanel>
+
+                        <CheckBox x:Name="EnabledCheckBox"
+                                  Grid.Row="5"
+                                  Content="启用此规则"
+                                  IsChecked="True"
+                                  Margin="0,4,0,0" />
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="2"
+                        Background="#11202A"
+                        CornerRadius="8"
+                        Padding="16">
+                    <StackPanel>
+                        <TextBlock Text="录入建议"
+                                   FontSize="16"
+                                   FontWeight="SemiBold"
+                                   Foreground="White" />
+                        <TextBlock Text="数字键、F1-F12、鼠标中键和侧键会作为单键记录。软件运行期间，这些单键会被 Desktop Portal 独占。组合键建议用于字母或数字，例如 Alt+1、Ctrl+Alt+Q。"
+                                   TextWrapping="Wrap"
+                                   Foreground="#A9BAC7"
+                                   Margin="0,10,0,0" />
+                        <Separator Margin="0,16" Background="#25495E" />
+                        <TextBlock Text="URL 独立窗口"
+                                   FontWeight="SemiBold"
+                                   Foreground="#D8E5ED" />
+                        <TextBlock Text="选择独立窗口时会优先使用 Chrome，其次 Edge；找不到浏览器时自动回退默认浏览器。"
+                                   TextWrapping="Wrap"
+                                   Foreground="#A9BAC7"
+                                   Margin="0,8,0,0" />
+                        <Separator Margin="0,16" Background="#25495E" />
+                        <TextBlock Text="标题提示"
+                                   FontWeight="SemiBold"
+                                   Foreground="#D8E5ED" />
+                        <TextBlock Text="文件或网页窗口不容易精确匹配时，可填写窗口标题中的关键词。"
+                                   TextWrapping="Wrap"
+                                   Foreground="#A9BAC7"
+                                   Margin="0,8,0,0" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </ScrollViewer>
+
+        <Border Grid.Row="2"
+                Background="White"
+                BorderBrush="{StaticResource LineBrush}"
+                BorderThickness="1,1,0,0"
+                Padding="22,14">
+            <DockPanel LastChildFill="False">
+                <Button Content="保存"
+                        Style="{StaticResource PrimaryDialogButtonStyle}"
+                        Margin="0,0,8,0"
+                        Click="SaveButton_Click" />
+                <Button Content="取消"
+                        Style="{StaticResource DialogButtonStyle}"
+                        IsCancel="True" />
+            </DockPanel>
+        </Border>
+    </Grid>
+</Window>

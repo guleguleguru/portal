@@ -1,0 +1,27 @@
+# Build outputs
+bin/
+obj/
+artifacts/
+TestResults/
+
+# Visual Studio / .NET user state
+.vs/
+*.user
+*.suo
+*.rsuser
+
+# Local runtime data
+*.log
+logs/
+config.json
+config.broken.*.json
+backups/
+
+# Local shortcuts and temporary files
+*.lnk
+*.tmp
+*.bak
+
+# OS files
+Thumbs.db
+Desktop.ini
