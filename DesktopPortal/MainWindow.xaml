@@ -5,57 +5,102 @@
         Height="720"
         Width="1180"
         MinHeight="620"
-        MinWidth="980"
-        Background="#EEF1F5"
-        FontFamily="Microsoft YaHei UI"
+        MinWidth="1020"
+        Background="#07080A"
+        FontFamily="Microsoft YaHei UI, Segoe UI"
         Icon="/Assets/DesktopPortal.ico">
     <Window.Resources>
-        <SolidColorBrush x:Key="InkBrush" Color="#17202A" />
-        <SolidColorBrush x:Key="MutedBrush" Color="#667085" />
-        <SolidColorBrush x:Key="LineBrush" Color="#D8DEE7" />
-        <SolidColorBrush x:Key="PanelBrush" Color="#FFFFFF" />
-        <SolidColorBrush x:Key="AccentBrush" Color="#146C94" />
-        <SolidColorBrush x:Key="AccentDarkBrush" Color="#0F4F6D" />
-        <SolidColorBrush x:Key="DangerBrush" Color="#B42318" />
+        <SolidColorBrush x:Key="PortalShellBrush" Color="#07080A" />
+        <SolidColorBrush x:Key="PortalPanelBrush" Color="#0D0F12" />
+        <SolidColorBrush x:Key="PortalPanelElevatedBrush" Color="#12151A" />
+        <SolidColorBrush x:Key="PortalCardBrush" Color="#171B22" />
+        <SolidColorBrush x:Key="PortalHairlineBrush" Color="#252A33" />
+        <SolidColorBrush x:Key="PortalInkBrush" Color="#F4F6F8" />
+        <SolidColorBrush x:Key="PortalMutedBrush" Color="#9CA3AF" />
+        <SolidColorBrush x:Key="PortalFaintBrush" Color="#6B7280" />
+        <SolidColorBrush x:Key="PortalAccentBrush" Color="#57C1FF" />
+        <SolidColorBrush x:Key="PortalSuccessBrush" Color="#59D499" />
+        <SolidColorBrush x:Key="PortalWarningBrush" Color="#FFC533" />
+        <SolidColorBrush x:Key="PortalDangerBrush" Color="#FF6161" />
+        <SolidColorBrush x:Key="PortalDangerSurfaceBrush" Color="#2A1417" />
 
-        <Style x:Key="ToolbarButtonStyle" TargetType="Button">
+        <Style x:Key="CommandButtonStyle" TargetType="Button">
             <Setter Property="Height" Value="36" />
-            <Setter Property="MinWidth" Value="84" />
+            <Setter Property="MinWidth" Value="82" />
             <Setter Property="Padding" Value="14,0" />
             <Setter Property="Margin" Value="0,0,8,0" />
-            <Setter Property="Background" Value="#FFFFFF" />
-            <Setter Property="BorderBrush" Value="{StaticResource LineBrush}" />
+            <Setter Property="Background" Value="{StaticResource PortalPanelElevatedBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource PortalHairlineBrush}" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="Foreground" Value="{StaticResource InkBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource PortalInkBrush}" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="SemiBold" />
             <Setter Property="Cursor" Value="Hand" />
         </Style>
 
-        <Style x:Key="PrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource ToolbarButtonStyle}">
-            <Setter Property="Background" Value="{StaticResource AccentBrush}" />
-            <Setter Property="BorderBrush" Value="{StaticResource AccentBrush}" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontWeight" Value="SemiBold" />
+        <Style x:Key="PrimaryCommandButtonStyle" TargetType="Button" BasedOn="{StaticResource CommandButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource PortalAccentBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource PortalAccentBrush}" />
+            <Setter Property="Foreground" Value="#051016" />
         </Style>
 
-        <Style x:Key="DangerButtonStyle" TargetType="Button" BasedOn="{StaticResource ToolbarButtonStyle}">
-            <Setter Property="Foreground" Value="{StaticResource DangerBrush}" />
+        <Style x:Key="DangerCommandButtonStyle" TargetType="Button" BasedOn="{StaticResource CommandButtonStyle}">
+            <Setter Property="Foreground" Value="{StaticResource PortalDangerBrush}" />
+            <Setter Property="BorderBrush" Value="#4A252B" />
         </Style>
 
         <Style x:Key="MetricLabelStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="12" />
-            <Setter Property="Foreground" Value="{StaticResource MutedBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource PortalMutedBrush}" />
         </Style>
 
         <Style x:Key="MetricValueStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="22" />
+            <Setter Property="FontSize" Value="24" />
             <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="Foreground" Value="{StaticResource InkBrush}" />
-            <Setter Property="Margin" Value="0,3,0,0" />
+            <Setter Property="Foreground" Value="{StaticResource PortalInkBrush}" />
+            <Setter Property="Margin" Value="0,4,0,0" />
+        </Style>
+
+        <Style x:Key="KeycapBadgeStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PortalCardBrush}" />
+            <Setter Property="BorderBrush" Value="{StaticResource PortalHairlineBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="Padding" Value="8,2" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+
+        <Style x:Key="TypeBadgeStyle" TargetType="Border">
+            <Setter Property="Background" Value="#0E2330" />
+            <Setter Property="BorderBrush" Value="#23506A" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="Padding" Value="9,3" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+
+        <Style x:Key="StatusPillStyle" TargetType="Border">
+            <Setter Property="Background" Value="#10221B" />
+            <Setter Property="BorderBrush" Value="#275D43" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="Padding" Value="9,3" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding HasIssue}" Value="True">
+                    <Setter Property="Background" Value="{StaticResource PortalDangerSurfaceBrush}" />
+                    <Setter Property="BorderBrush" Value="#73323A" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Enabled}" Value="False">
+                    <Setter Property="Background" Value="#171A20" />
+                    <Setter Property="BorderBrush" Value="#323743" />
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
 
         <Style TargetType="DataGrid">
             <Setter Property="GridLinesVisibility" Value="Horizontal" />
-            <Setter Property="HorizontalGridLinesBrush" Value="#EDF0F4" />
+            <Setter Property="HorizontalGridLinesBrush" Value="{StaticResource PortalHairlineBrush}" />
             <Setter Property="HeadersVisibility" Value="Column" />
             <Setter Property="RowHeaderWidth" Value="0" />
             <Setter Property="CanUserAddRows" Value="False" />
@@ -64,73 +109,104 @@
             <Setter Property="SelectionMode" Value="Single" />
             <Setter Property="SelectionUnit" Value="FullRow" />
             <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Background" Value="White" />
-            <Setter Property="RowHeight" Value="42" />
+            <Setter Property="Background" Value="{StaticResource PortalPanelBrush}" />
+            <Setter Property="Foreground" Value="{StaticResource PortalInkBrush}" />
+            <Setter Property="RowHeight" Value="44" />
             <Setter Property="ColumnHeaderHeight" Value="38" />
         </Style>
 
         <Style TargetType="DataGridColumnHeader">
-            <Setter Property="Background" Value="#F7F9FC" />
-            <Setter Property="Foreground" Value="#526071" />
+            <Setter Property="Background" Value="#101318" />
+            <Setter Property="Foreground" Value="{StaticResource PortalMutedBrush}" />
+            <Setter Property="FontSize" Value="12" />
             <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="BorderBrush" Value="#E7EBF0" />
+            <Setter Property="BorderBrush" Value="{StaticResource PortalHairlineBrush}" />
             <Setter Property="Padding" Value="10,0" />
+        </Style>
+
+        <Style TargetType="DataGridCell">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource PortalInkBrush}" />
+            <Setter Property="Padding" Value="10,0" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="GridTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource PortalInkBrush}" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="TextTrimming" Value="CharacterEllipsis" />
         </Style>
     </Window.Resources>
 
-    <Grid>
+    <Grid Background="{StaticResource PortalShellBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="258" />
+            <ColumnDefinition Width="272" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Border Grid.Column="0"
-                Background="#11202A"
+                Background="{StaticResource PortalShellBrush}"
+                BorderBrush="{StaticResource PortalHairlineBrush}"
+                BorderThickness="0,0,1,0"
                 Padding="22">
             <DockPanel LastChildFill="True">
                 <StackPanel DockPanel.Dock="Top">
+                    <Border Width="42"
+                            Height="42"
+                            Background="{StaticResource PortalPanelElevatedBrush}"
+                            BorderBrush="{StaticResource PortalHairlineBrush}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            HorizontalAlignment="Left">
+                        <Image Source="/Assets/DesktopPortal.ico" Width="24" Height="24" />
+                    </Border>
+
                     <TextBlock Text="Desktop Portal"
                                FontSize="24"
                                FontWeight="SemiBold"
-                               Foreground="White" />
+                               Foreground="{StaticResource PortalInkBrush}"
+                               Margin="0,16,0,0" />
                     <TextBlock Text="桌面传送门"
                                FontSize="13"
-                               Foreground="#A9BAC7"
+                               Foreground="{StaticResource PortalMutedBrush}"
                                Margin="0,5,0,0" />
 
-                    <Border Background="#1A3140"
-                            BorderBrush="#25495E"
+                    <Border Background="{StaticResource PortalPanelBrush}"
+                            BorderBrush="{StaticResource PortalHairlineBrush}"
                             BorderThickness="1"
                             CornerRadius="8"
                             Padding="14"
                             Margin="0,24,0,0">
                         <StackPanel>
                             <TextBlock Text="运行状态"
-                                       FontSize="13"
+                                       FontSize="12"
                                        FontWeight="SemiBold"
-                                       Foreground="#D8E5ED" />
+                                       Foreground="{StaticResource PortalMutedBrush}" />
                             <TextBlock x:Name="PausedStateText"
                                        Text="状态：正常"
                                        FontSize="20"
                                        FontWeight="SemiBold"
-                                       Foreground="White"
+                                       Foreground="{StaticResource PortalInkBrush}"
                                        Margin="0,10,0,0" />
                             <TextBlock Text="关闭窗口后仍会留在系统托盘。"
                                        TextWrapping="Wrap"
                                        FontSize="12"
-                                       Foreground="#A9BAC7"
+                                       Foreground="{StaticResource PortalFaintBrush}"
                                        Margin="0,8,0,0" />
                         </StackPanel>
                     </Border>
 
-                    <Grid Margin="0,16,0,0">
+                    <Grid Margin="0,14,0,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="12" />
+                            <ColumnDefinition Width="10" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Border Grid.Column="0"
-                                Background="#F8FBFC"
+                                Background="{StaticResource PortalPanelBrush}"
+                                BorderBrush="{StaticResource PortalHairlineBrush}"
+                                BorderThickness="1"
                                 CornerRadius="8"
                                 Padding="12">
                             <StackPanel>
@@ -139,29 +215,36 @@
                             </StackPanel>
                         </Border>
                         <Border Grid.Column="2"
-                                Background="#FFF8F6"
+                                Background="{StaticResource PortalPanelBrush}"
+                                BorderBrush="{StaticResource PortalHairlineBrush}"
+                                BorderThickness="1"
                                 CornerRadius="8"
                                 Padding="12">
                             <StackPanel>
                                 <TextBlock Text="冲突" Style="{StaticResource MetricLabelStyle}" />
-                                <TextBlock x:Name="ConflictCountText" Text="0" Style="{StaticResource MetricValueStyle}" />
+                                <TextBlock x:Name="ConflictCountText"
+                                           Text="0"
+                                           Foreground="{StaticResource PortalDangerBrush}"
+                                           Style="{StaticResource MetricValueStyle}" />
                             </StackPanel>
                         </Border>
                     </Grid>
 
-                    <Border Background="#162A37"
+                    <Border Background="{StaticResource PortalPanelBrush}"
+                            BorderBrush="{StaticResource PortalHairlineBrush}"
+                            BorderThickness="1"
                             CornerRadius="8"
                             Padding="12"
-                            Margin="0,16,0,0">
+                            Margin="0,14,0,0">
                         <StackPanel>
                             <TextBlock Text="规则总数"
                                        FontSize="12"
-                                       Foreground="#A9BAC7" />
+                                       Foreground="{StaticResource PortalMutedBrush}" />
                             <TextBlock x:Name="RulesCountText"
                                        Text="0"
                                        FontSize="20"
                                        FontWeight="SemiBold"
-                                       Foreground="White"
+                                       Foreground="{StaticResource PortalInkBrush}"
                                        Margin="0,3,0,0" />
                         </StackPanel>
                     </Border>
@@ -169,13 +252,19 @@
 
                 <StackPanel DockPanel.Dock="Bottom">
                     <TextBlock Text="配置文件"
-                               Foreground="#A9BAC7"
+                               Foreground="{StaticResource PortalMutedBrush}"
                                FontSize="12"
                                Margin="0,0,0,6" />
-                    <TextBlock x:Name="ConfigPathText"
-                               TextWrapping="Wrap"
-                               FontSize="11"
-                               Foreground="#D8E5ED" />
+                    <Border Background="{StaticResource PortalPanelBrush}"
+                            BorderBrush="{StaticResource PortalHairlineBrush}"
+                            BorderThickness="1"
+                            CornerRadius="6"
+                            Padding="10">
+                        <TextBlock x:Name="ConfigPathText"
+                                   TextWrapping="Wrap"
+                                   FontSize="11"
+                                   Foreground="{StaticResource PortalFaintBrush}" />
+                    </Border>
                 </StackPanel>
             </DockPanel>
         </Border>
@@ -187,60 +276,60 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" Margin="0,0,0,18">
+            <Grid Grid.Row="0" Margin="0,0,0,16">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <StackPanel>
-                    <TextBlock Text="规则控制台"
-                               FontSize="28"
+                    <TextBlock Text="规则命令中心"
+                               FontSize="26"
                                FontWeight="SemiBold"
-                               Foreground="{StaticResource InkBrush}" />
-                    <TextBlock Text="为网页、文件、文件夹和程序配置全局快捷键；冲突会直接显示在状态列。"
+                               Foreground="{StaticResource PortalInkBrush}" />
+                    <TextBlock Text="为网页、文件、文件夹和程序配置全局快捷键；冲突和健康检查结果会显示在状态列。"
                                FontSize="13"
-                               Foreground="{StaticResource MutedBrush}"
+                               Foreground="{StaticResource PortalMutedBrush}"
                                Margin="0,5,0,0" />
                 </StackPanel>
                 <Border Grid.Column="1"
-                        Background="#E6F2F7"
-                        BorderBrush="#B7D8E6"
+                        Background="{StaticResource PortalPanelBrush}"
+                        BorderBrush="{StaticResource PortalHairlineBrush}"
                         BorderThickness="1"
                         CornerRadius="8"
                         Padding="12,8"
                         VerticalAlignment="Center">
-                    <TextBlock Text="本地 JSON 配置 · 无账号 · 无云同步"
-                               Foreground="#0F4F6D"
+                    <TextBlock Text="本地 JSON · 无账号 · 无云同步"
+                               Foreground="{StaticResource PortalAccentBrush}"
                                FontSize="12"
                                FontWeight="SemiBold" />
                 </Border>
             </Grid>
 
             <Border Grid.Row="1"
-                    Background="{StaticResource PanelBrush}"
-                    BorderBrush="{StaticResource LineBrush}"
+                    Background="{StaticResource PortalPanelBrush}"
+                    BorderBrush="{StaticResource PortalHairlineBrush}"
                     BorderThickness="1"
                     CornerRadius="8"
                     Padding="12"
                     Margin="0,0,0,14">
                 <DockPanel LastChildFill="False">
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
-                        <Button x:Name="AddButton" Content="新增规则" Style="{StaticResource PrimaryButtonStyle}" Click="AddButton_Click" />
-                        <Button x:Name="EditButton" Content="编辑" Style="{StaticResource ToolbarButtonStyle}" Click="EditButton_Click" />
-                        <Button x:Name="DeleteButton" Content="删除" Style="{StaticResource DangerButtonStyle}" Click="DeleteButton_Click" />
-                        <Button x:Name="TestButton" Content="测试执行" Style="{StaticResource ToolbarButtonStyle}" Click="TestButton_Click" />
-                        <Button x:Name="HealthCheckButton" Content="健康检查" Style="{StaticResource ToolbarButtonStyle}" Click="HealthCheckButton_Click" />
+                        <Button x:Name="AddButton" Content="新增规则" Style="{StaticResource PrimaryCommandButtonStyle}" Click="AddButton_Click" />
+                        <Button x:Name="EditButton" Content="编辑" Style="{StaticResource CommandButtonStyle}" Click="EditButton_Click" />
+                        <Button x:Name="DeleteButton" Content="删除" Style="{StaticResource DangerCommandButtonStyle}" Click="DeleteButton_Click" />
+                        <Button x:Name="TestButton" Content="测试执行" Style="{StaticResource CommandButtonStyle}" Click="TestButton_Click" />
+                        <Button x:Name="HealthCheckButton" Content="健康检查" Style="{StaticResource CommandButtonStyle}" Click="HealthCheckButton_Click" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
-                        <Button x:Name="PauseAllButton" Content="暂停全部" Style="{StaticResource ToolbarButtonStyle}" Click="PauseAllButton_Click" />
-                        <Button x:Name="SettingsButton" Content="设置" Style="{StaticResource ToolbarButtonStyle}" Click="SettingsButton_Click" Margin="0" />
+                        <Button x:Name="PauseAllButton" Content="暂停全部" Style="{StaticResource CommandButtonStyle}" Click="PauseAllButton_Click" />
+                        <Button x:Name="SettingsButton" Content="设置" Style="{StaticResource CommandButtonStyle}" Click="SettingsButton_Click" Margin="0" />
                     </StackPanel>
                 </DockPanel>
             </Border>
 
             <Border Grid.Row="2"
-                    Background="{StaticResource PanelBrush}"
-                    BorderBrush="{StaticResource LineBrush}"
+                    Background="{StaticResource PortalPanelBrush}"
+                    BorderBrush="{StaticResource PortalHairlineBrush}"
                     BorderThickness="1"
                     CornerRadius="8"
                     ClipToBounds="True">
@@ -251,14 +340,21 @@
                           PreviewMouseRightButtonUp="RulesGrid_PreviewMouseRightButtonUp">
                     <DataGrid.RowStyle>
                         <Style TargetType="DataGridRow">
-                            <Setter Property="BorderBrush" Value="#EDF0F4" />
+                            <Setter Property="Background" Value="{StaticResource PortalPanelBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource PortalInkBrush}" />
                             <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="{StaticResource PortalPanelElevatedBrush}" />
+                                </Trigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#10202B" />
+                                </Trigger>
                                 <DataTrigger Binding="{Binding HasIssue}" Value="True">
-                                    <Setter Property="Foreground" Value="#B42318" />
-                                    <Setter Property="Background" Value="#FFF8F6" />
+                                    <Setter Property="Foreground" Value="{StaticResource PortalDangerBrush}" />
+                                    <Setter Property="Background" Value="#151012" />
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Enabled}" Value="False">
-                                    <Setter Property="Foreground" Value="#8A94A3" />
+                                    <Setter Property="Foreground" Value="{StaticResource PortalFaintBrush}" />
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -267,54 +363,58 @@
                         <DataGridCheckBoxColumn Header="启用"
                                                 Width="64"
                                                 Binding="{Binding Enabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                        <DataGridTextColumn Header="名称" Width="150" Binding="{Binding Name}" IsReadOnly="True" />
-                        <DataGridTextColumn Header="快捷键" Width="118" Binding="{Binding Hotkey}" IsReadOnly="True" />
-                        <DataGridTemplateColumn Header="类型" Width="92">
+                        <DataGridTextColumn Header="名称"
+                                            Width="150"
+                                            Binding="{Binding Name}"
+                                            ElementStyle="{StaticResource GridTextStyle}"
+                                            IsReadOnly="True" />
+                        <DataGridTemplateColumn Header="快捷键" Width="132">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border Background="#EEF6F9"
-                                            BorderBrush="#C8E2EC"
-                                            BorderThickness="1"
-                                            CornerRadius="10"
-                                            Padding="9,3"
-                                            HorizontalAlignment="Left">
+                                    <Border Style="{StaticResource KeycapBadgeStyle}">
+                                        <TextBlock Text="{Binding Hotkey}"
+                                                   FontSize="12"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="{StaticResource PortalInkBrush}" />
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="类型" Width="96">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Style="{StaticResource TypeBadgeStyle}">
                                         <TextBlock Text="{Binding TargetTypeText}"
-                                                   Foreground="#0F4F6D"
+                                                   Foreground="{StaticResource PortalAccentBrush}"
                                                    FontSize="12"
                                                    FontWeight="SemiBold" />
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="打开方式" Width="108" Binding="{Binding OpenModeText}" IsReadOnly="True" />
-                        <DataGridTextColumn Header="目标" Width="*" Binding="{Binding Target}" IsReadOnly="True" />
-                        <DataGridTextColumn Header="标题提示" Width="130" Binding="{Binding WindowTitleHint}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="打开方式"
+                                            Width="108"
+                                            Binding="{Binding OpenModeText}"
+                                            ElementStyle="{StaticResource GridTextStyle}"
+                                            IsReadOnly="True" />
+                        <DataGridTextColumn Header="目标"
+                                            Width="*"
+                                            Binding="{Binding Target}"
+                                            ElementStyle="{StaticResource GridTextStyle}"
+                                            IsReadOnly="True" />
+                        <DataGridTextColumn Header="标题提示"
+                                            Width="130"
+                                            Binding="{Binding WindowTitleHint}"
+                                            ElementStyle="{StaticResource GridTextStyle}"
+                                            IsReadOnly="True" />
                         <DataGridTemplateColumn Header="状态" Width="190">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Border CornerRadius="10"
-                                            Padding="9,3"
-                                            HorizontalAlignment="Left">
-                                        <Border.Style>
-                                            <Style TargetType="Border">
-                                                <Setter Property="Background" Value="#F1F8F4" />
-                                                <Setter Property="BorderBrush" Value="#BFE3C7" />
-                                                <Setter Property="BorderThickness" Value="1" />
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding HasIssue}" Value="True">
-                                                        <Setter Property="Background" Value="#FEE4E2" />
-                                                        <Setter Property="BorderBrush" Value="#F97066" />
-                                                    </DataTrigger>
-                                                    <DataTrigger Binding="{Binding Enabled}" Value="False">
-                                                        <Setter Property="Background" Value="#F2F4F7" />
-                                                        <Setter Property="BorderBrush" Value="#D0D5DD" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </Border.Style>
+                                    <Border Style="{StaticResource StatusPillStyle}">
                                         <TextBlock Text="{Binding StatusText}"
                                                    FontSize="12"
-                                                   FontWeight="SemiBold" />
+                                                   FontWeight="SemiBold"
+                                                   Foreground="{StaticResource PortalInkBrush}" />
                                     </Border>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>

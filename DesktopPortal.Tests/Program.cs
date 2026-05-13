@@ -463,4 +463,33 @@ public sealed class DesktopPortalTests
         StringAssert.Contains(installer, "AppVersion=0.1.0-beta");
         StringAssert.Contains(installer, "DesktopPortal.exe");
     }
+
+    [TestMethod]
+    public void ProjectDesignDocumentCapturesDownloadedDesignReference()
+    {
+        var root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", ".."));
+        var designPath = Path.Combine(root, "DESIGN.md");
+
+        Assert.IsTrue(File.Exists(designPath), "DESIGN.md should document the Desktop Portal visual system");
+        var design = File.ReadAllText(designPath);
+
+        StringAssert.Contains(design, "Desktop Portal");
+        StringAssert.Contains(design, "awesome-design-md");
+        StringAssert.Contains(design, "Raycast");
+        StringAssert.Contains(design, "PortalShell");
+        StringAssert.Contains(design, "Keycap");
+    }
+
+    [TestMethod]
+    public void MainWindowUsesCommandCenterDesignTokens()
+    {
+        var root = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", ".."));
+        var xaml = File.ReadAllText(Path.Combine(root, "DesktopPortal", "MainWindow.xaml"));
+
+        StringAssert.Contains(xaml, "PortalShellBrush");
+        StringAssert.Contains(xaml, "CommandButtonStyle");
+        StringAssert.Contains(xaml, "KeycapBadgeStyle");
+        StringAssert.Contains(xaml, "StatusPillStyle");
+        StringAssert.Contains(xaml, "规则命令中心");
+    }
 }
